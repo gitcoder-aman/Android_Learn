@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity">
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Data passing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/animationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Animation"
+        style="@style/MyButtonBold"
+        app:layout_constraintEnd_toEndOf="@+id/btn"
+        app:layout_constraintStart_toStartOf="@+id/btn"
+        app:layout_constraintTop_toBottomOf="@+id/btn" />
+
+    <Button
+        android:id="@+id/lottieBtn"
+        style="@style/MyButtonBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Lottie Animation"
+        app:layout_constraintStart_toEndOf="@+id/animationBtn"
+        app:layout_constraintTop_toTopOf="@+id/animationBtn" />
+
+    <Button
+        android:id="@+id/listView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="ListView"
+        style="@style/MyButtonBold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn"
+        app:layout_constraintStart_toEndOf="@+id/btn"
+        app:layout_constraintTop_toTopOf="@+id/btn" />
+
+    <Button
+        android:id="@+id/cardBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="CardView"
+        app:layout_constraintEnd_toEndOf="@+id/animationBtn"
+        app:layout_constraintStart_toStartOf="@+id/animationBtn"
+        app:layout_constraintTop_toBottomOf="@+id/animationBtn" />
+
+    <Button
+        android:id="@+id/RecyclerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="RecyclerView"
+        app:layout_constraintBottom_toBottomOf="@+id/cardBtn"
+        app:layout_constraintStart_toEndOf="@+id/cardBtn"
+        app:layout_constraintTop_toTopOf="@+id/cardBtn" />
+
+    <Button
+        android:id="@+id/toolbarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Toolbar"
+        app:layout_constraintBottom_toBottomOf="@+id/RecyclerBtn"
+        app:layout_constraintStart_toEndOf="@+id/RecyclerBtn"
+        app:layout_constraintTop_toTopOf="@+id/RecyclerBtn" />
+
+    <Button
+        android:id="@+id/toastBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Toast"
+        app:layout_constraintEnd_toEndOf="@+id/cardBtn"
+        app:layout_constraintStart_toStartOf="@+id/cardBtn"
+        app:layout_constraintTop_toBottomOf="@+id/cardBtn" />
+
+    <Button
+        android:id="@+id/dialogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="DialogBox"
+        app:layout_constraintBottom_toBottomOf="@+id/toastBtn"
+        app:layout_constraintStart_toEndOf="@+id/toastBtn"
+        app:layout_constraintTop_toTopOf="@+id/toastBtn" />
+
+    <Button
+        android:id="@+id/notifBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Notifiaction"
+        app:layout_constraintBottom_toBottomOf="@+id/dialogBtn"
+        app:layout_constraintStart_toEndOf="@+id/dialogBtn"
+        app:layout_constraintTop_toTopOf="@+id/dialogBtn" />
+
+    <Button
+        android:id="@+id/implicitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="implicitIntent"
+        app:layout_constraintEnd_toEndOf="@+id/toastBtn"
+        app:layout_constraintStart_toStartOf="@+id/toastBtn"
+        app:layout_constraintTop_toBottomOf="@+id/toastBtn" />
+
+    <Button
+        android:id="@+id/fragmentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Fragment"
+        app:layout_constraintBottom_toBottomOf="@+id/implicitBtn"
+        app:layout_constraintStart_toEndOf="@+id/implicitBtn"
+        app:layout_constraintTop_toBottomOf="@+id/toastBtn" />
+
+    <Button
+        android:id="@+id/tabLayoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="TabLayout"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentBtn"
+        app:layout_constraintStart_toEndOf="@+id/fragmentBtn"
+        app:layout_constraintTop_toTopOf="@+id/fragmentBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
