@@ -10,20 +10,19 @@
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_6sdp"
         android:text="Data passing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/animationBtn"
+        style="@style/MyButtonBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/_6sdp"
         android:text="Animation"
-        style="@style/MyButtonBold"
-        app:layout_constraintEnd_toEndOf="@+id/btn"
         app:layout_constraintStart_toStartOf="@+id/btn"
         app:layout_constraintTop_toBottomOf="@+id/btn" />
 
@@ -32,8 +31,8 @@
         style="@style/MyButtonBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_6sdp"
         android:text="Lottie Animation"
         app:layout_constraintStart_toEndOf="@+id/animationBtn"
         app:layout_constraintTop_toTopOf="@+id/animationBtn" />
@@ -42,7 +41,7 @@
         android:id="@+id/listView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/_6sdp"
         android:text="ListView"
         style="@style/MyButtonBold"
         app:layout_constraintBottom_toBottomOf="@+id/btn"
@@ -53,9 +52,8 @@
         android:id="@+id/cardBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/_6sdp"
         android:text="CardView"
-        app:layout_constraintEnd_toEndOf="@+id/animationBtn"
         app:layout_constraintStart_toStartOf="@+id/animationBtn"
         app:layout_constraintTop_toBottomOf="@+id/animationBtn" />
 
@@ -63,7 +61,7 @@
         android:id="@+id/RecyclerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/_6sdp"
         android:text="RecyclerView"
         app:layout_constraintBottom_toBottomOf="@+id/cardBtn"
         app:layout_constraintStart_toEndOf="@+id/cardBtn"
@@ -73,7 +71,7 @@
         android:id="@+id/toolbarBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="@dimen/_4sdp"
         android:text="Toolbar"
         app:layout_constraintBottom_toBottomOf="@+id/RecyclerBtn"
         app:layout_constraintStart_toEndOf="@+id/RecyclerBtn"
@@ -83,9 +81,8 @@
         android:id="@+id/toastBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/_6sdp"
         android:text="Toast"
-        app:layout_constraintEnd_toEndOf="@+id/cardBtn"
         app:layout_constraintStart_toStartOf="@+id/cardBtn"
         app:layout_constraintTop_toBottomOf="@+id/cardBtn" />
 
@@ -93,7 +90,7 @@
         android:id="@+id/dialogBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/_6sdp"
         android:text="DialogBox"
         app:layout_constraintBottom_toBottomOf="@+id/toastBtn"
         app:layout_constraintStart_toEndOf="@+id/toastBtn"
@@ -103,18 +100,20 @@
         android:id="@+id/notifBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/_6sdp"
         android:text="Notifiaction"
         app:layout_constraintBottom_toBottomOf="@+id/dialogBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toEndOf="@+id/dialogBtn"
-        app:layout_constraintTop_toTopOf="@+id/dialogBtn" />
+        app:layout_constraintTop_toTopOf="@+id/dialogBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/implicitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="implicitIntent"
-        app:layout_constraintEnd_toEndOf="@+id/toastBtn"
         app:layout_constraintStart_toStartOf="@+id/toastBtn"
         app:layout_constraintTop_toBottomOf="@+id/toastBtn" />
 
@@ -122,7 +121,7 @@
         android:id="@+id/fragmentBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/_6sdp"
         android:text="Fragment"
         app:layout_constraintBottom_toBottomOf="@+id/implicitBtn"
         app:layout_constraintStart_toEndOf="@+id/implicitBtn"
@@ -132,11 +131,28 @@
         android:id="@+id/tabLayoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="@dimen/_6sdp"
         android:text="TabLayout"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/fragmentBtn"
         app:layout_constraintStart_toEndOf="@+id/fragmentBtn"
         app:layout_constraintTop_toTopOf="@+id/fragmentBtn" />
+
+    <Button
+        android:id="@+id/bottomNavigationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BottomNevigation"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/implicitBtn"
+        app:layout_constraintTop_toBottomOf="@+id/implicitBtn" />
+
+    <Button
+        android:id="@+id/navigation_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NavigationDrawer"
+        app:layout_constraintStart_toStartOf="@+id/bottomNavigationBtn"
+        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
