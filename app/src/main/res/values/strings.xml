@@ -8,4 +8,7 @@
     <string name="utilities">Utilities</string>
     <string name="contacts">Contacts</string>
     <string name="profile">Profile</string>
+
+    <string name="OpenDrawer">Open navigation Drawer</string>
+    <string name="CloseDrawer">Close navigation Drawer</string>
 </resources>

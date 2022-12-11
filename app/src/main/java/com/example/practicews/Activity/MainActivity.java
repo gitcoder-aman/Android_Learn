@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.practicews.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btn,aniBtn,lottieBtn,listView,cardViewBtn,recyclerViewBtn,toolbarBtn,toastBtn;
-        Button dialogBtn,notifBtn,implicitBtn,fragmentBtn,tabLayoutBtn,bottomNavigationBtn,navigationDrawer;
+        Button dialogBtn,notifBtn,implicitBtn,fragmentBtn,tabLayoutBtn,bottomNavigationBtn,navigationDrawer,dataPassFrag,mapBtn;
 
         btn = findViewById(R.id.btn);
         aniBtn = findViewById(R.id.animationBtn);
@@ -35,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayoutBtn = findViewById(R.id.tabLayoutBtn);
         bottomNavigationBtn = findViewById(R.id.bottomNavigationBtn);
         navigationDrawer = findViewById(R.id.navigation_drawer);
+        dataPassFrag = findViewById(R.id.dataPassFrag);
+        mapBtn = findViewById(R.id.map_button);
 
 
         Intent intent = new Intent(this, DataPassingActivity.class);
@@ -129,6 +130,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,NavigationDrawer.class));
+            }
+        });
+        dataPassFrag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(MainActivity.this, DataPassingInFragActivity.class));
+            }
+        });
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,MapActivity.class));
             }
         });
 

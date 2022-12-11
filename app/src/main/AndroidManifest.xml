@@ -13,7 +13,22 @@
         android:theme="@style/Theme.PracticeWS"
         tools:targetApi="31">
         <activity
-            android:name=".NavigationDrawer"
+            android:name=".Activity.MapActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Activity.DataPassingInFragActivity"
+            android:exported="false"
+            android:theme="@style/MyTheme">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Activity.NavigationDrawer"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

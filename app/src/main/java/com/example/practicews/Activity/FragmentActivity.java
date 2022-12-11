@@ -17,6 +17,8 @@ import com.example.practicews.R;
 public class FragmentActivity extends AppCompatActivity {
 
     Button btnFragA, btnFragB, btnFragC;
+    String ROOT_FRAGMENT_TAG = "root_fragment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,32 +28,45 @@ public class FragmentActivity extends AppCompatActivity {
         btnFragB = findViewById(R.id.btnFragB);
         btnFragC = findViewById(R.id.btnFragC);
 
-        loadFragment(new AFragment()); //first loaded fragment in frameLayout
+        loadFragment(new AFragment(), true); //first loaded fragment in frameLayout
 
         btnFragA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               loadFragment(new AFragment());
+                loadFragment(new AFragment(), true);
             }
         });
         btnFragB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new BFragment());
+                loadFragment(new BFragment(), false);
             }
         });
         btnFragC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new CFragment());
+                loadFragment(new CFragment(), false);
             }
         });
     }
-    public void loadFragment(Fragment fragment){
+
+    public void loadFragment(Fragment fragment, boolean flag) {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.container,fragment);
+
+        if (flag) {
+            ft.replace(R.id.container, fragment);
+
+            fm.popBackStack(ROOT_FRAGMENT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            ft.addToBackStack(ROOT_FRAGMENT_TAG);
+
+        } else {
+            ft.replace(R.id.container, fragment);
+            //Managing Fragment back stack
+            ft.addToBackStack(null);
+        }
+
         ft.commit();
     }
 }

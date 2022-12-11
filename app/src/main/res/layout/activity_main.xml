@@ -155,4 +155,22 @@
         app:layout_constraintStart_toStartOf="@+id/bottomNavigationBtn"
         app:layout_constraintTop_toBottomOf="@+id/bottomNavigationBtn" />
 
+    <Button
+        android:id="@+id/dataPassFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="DataPassingInFrag"
+        app:layout_constraintStart_toEndOf="@+id/bottomNavigationBtn"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentBtn" />
+
+    <Button
+        android:id="@+id/map_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Map"
+        app:layout_constraintStart_toEndOf="@+id/navigation_drawer"
+        app:layout_constraintTop_toBottomOf="@+id/dataPassFrag" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
