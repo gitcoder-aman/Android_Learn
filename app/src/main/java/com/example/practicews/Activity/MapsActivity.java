@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.practicews.R;
 import com.example.practicews.databinding.ActivityMapsBinding;
@@ -21,6 +25,9 @@ import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -57,7 +64,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Add a marker in Sydney and move the camera
         LatLng delhi = new LatLng(28.642045974861404, 77.21826110310344);
-        MarkerOptions markerOptions = new MarkerOptions().position(delhi).title("Marker in Sydney");
+        MarkerOptions markerOptions = new MarkerOptions().position(delhi).title("Marker in Delhi");
         mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(delhi));
 
@@ -82,6 +89,31 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .position(delhi, 500f, 500f)
                 .image(BitmapDescriptorFactory.fromResource(R.drawable.animal))
                 .clickable(true));
+
+        //GeoCoder //Specific name of location
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull LatLng latLng) {
+
+                //remove previous marker
+                mMap.clear();
+
+                Geocoder geocoder = new Geocoder(MapsActivity.this);
+                try {
+                    ArrayList<Address> arrAdr = (ArrayList<Address>) geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+
+                    if (arrAdr.isEmpty()) { // when user click in empty area like sea, desert
+                        return;
+                    } else {
+                        Log.d("Address", arrAdr.get(0).getAddressLine(0));
+                        mMap.addMarker(new MarkerOptions().position(latLng).title(arrAdr.get(0).getAddressLine(0)));  //marker set where user click on map
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     @Override

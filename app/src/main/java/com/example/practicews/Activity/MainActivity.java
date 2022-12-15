@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn,aniBtn,lottieBtn,listView,cardViewBtn,recyclerViewBtn,toolbarBtn,toastBtn;
         Button dialogBtn,notifBtn,implicitBtn,fragmentBtn,tabLayoutBtn,bottomNavigationBtn,navigationDrawer,dataPassFrag,mapBtn;
+        Button getApiBtn,postApiBtn;
 
         btn = findViewById(R.id.btn);
         aniBtn = findViewById(R.id.animationBtn);
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         navigationDrawer = findViewById(R.id.navigation_drawer);
         dataPassFrag = findViewById(R.id.dataPassFrag);
         mapBtn = findViewById(R.id.map_button);
+        getApiBtn = findViewById(R.id.api_btn);
+        postApiBtn = findViewById(R.id.postApiBtn);
 
 
         Intent intent = new Intent(this, DataPassingActivity.class);
@@ -145,6 +148,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,MapsActivity.class));
             }
         });
+        getApiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,ApiActivity.class));
+            }
+        });
+        postApiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,PostApiActivity.class));
+            }
+        });
+
 
 
     }
