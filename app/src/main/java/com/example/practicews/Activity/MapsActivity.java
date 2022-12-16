@@ -2,10 +2,17 @@ package com.example.practicews.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,12 +35,17 @@ import com.google.android.gms.maps.model.PolygonOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
+    private int PERMISSION_CODE = 1;
+    private LocationManager locationManager;
+    private String cityName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +59,52 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //problem = https://stackoverflow.com/questions/32290045/error-invoke-virtual-method-double-android-location-location-getlatitude-on
+        //Get Current Location
+
+//        if (location != null) {
+//            cityName = getCityName(location.getLongitude(), location.getLatitude());
+//            Toast.makeText(this, cityName, Toast.LENGTH_SHORT).show();
+//        }
+
+    }
+
+//    private String getCityName(double longitude, double latitude) {
+//        String cityName = "Not found";
+//        Geocoder geocoder = new Geocoder(getBaseContext(), Locale.getDefault());
+//
+//        try {
+//            List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 10);
+//
+//            for (Address address : addressList) {
+//                if (address != null) {
+//                    String city = address.getLocality();
+//                    if (city != null && !city.equals("")) {
+//                        cityName = city;
+//                    } else {
+//                        Log.e("TAG", "CITY NOT FOUND");
+//                        Toast.makeText(this, "User City Not Found..", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return cityName;
+//    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission granted..", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Please provides the permissions", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
     }
 
     /**
@@ -60,10 +118,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+
+        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng delhi = new LatLng(28.642045974861404, 77.21826110310344);
+        LatLng delhi = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(delhi).title("Marker in Delhi");
         mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(delhi));
@@ -89,6 +151,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .position(delhi, 500f, 500f)
                 .image(BitmapDescriptorFactory.fromResource(R.drawable.animal))
                 .clickable(true));
+
 
         //GeoCoder //Specific name of location
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {

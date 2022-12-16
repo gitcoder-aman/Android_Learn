@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn,aniBtn,lottieBtn,listView,cardViewBtn,recyclerViewBtn,toolbarBtn,toastBtn;
         Button dialogBtn,notifBtn,implicitBtn,fragmentBtn,tabLayoutBtn,bottomNavigationBtn,navigationDrawer,dataPassFrag,mapBtn;
-        Button getApiBtn,postApiBtn;
+        Button getApiBtn,postApiBtn,getCurrentLocationBtn;
 
         btn = findViewById(R.id.btn);
         aniBtn = findViewById(R.id.animationBtn);
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mapBtn = findViewById(R.id.map_button);
         getApiBtn = findViewById(R.id.api_btn);
         postApiBtn = findViewById(R.id.postApiBtn);
+        getCurrentLocationBtn = findViewById(R.id.getCurrentLocationBtn);
 
 
         Intent intent = new Intent(this, DataPassingActivity.class);
@@ -158,6 +159,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,PostApiActivity.class));
+            }
+        });
+        getCurrentLocationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,GetLocationActivity.class));
             }
         });
 
