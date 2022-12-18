@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback{
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
@@ -60,38 +60,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
         //problem = https://stackoverflow.com/questions/32290045/error-invoke-virtual-method-double-android-location-location-getlatitude-on
-        //Get Current Location
-
-//        if (location != null) {
-//            cityName = getCityName(location.getLongitude(), location.getLatitude());
-//            Toast.makeText(this, cityName, Toast.LENGTH_SHORT).show();
-//        }
 
     }
 
-//    private String getCityName(double longitude, double latitude) {
-//        String cityName = "Not found";
-//        Geocoder geocoder = new Geocoder(getBaseContext(), Locale.getDefault());
-//
-//        try {
-//            List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 10);
-//
-//            for (Address address : addressList) {
-//                if (address != null) {
-//                    String city = address.getLocality();
-//                    if (city != null && !city.equals("")) {
-//                        cityName = city;
-//                    } else {
-//                        Log.e("TAG", "CITY NOT FOUND");
-//                        Toast.makeText(this, "User City Not Found..", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return cityName;
-//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -120,20 +91,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
 
 
-        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng delhi = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions().position(delhi).title("Marker in Delhi");
+        LatLng chakand = new LatLng(24.890031000000004,84.9773148);
+        MarkerOptions markerOptions = new MarkerOptions().position(chakand).title("Marker in Chakand");
         mMap.addMarker(markerOptions);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(delhi));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(chakand));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(chakand, 16f));
 
         //Google Map Overlays
         //Circle
         mMap.addCircle(new CircleOptions()
-                .center(delhi)
+                .center(chakand)
                 .radius(1000)
                 .fillColor(R.color.teal_200)
                 .strokeColor(R.color.dark_Grey));
@@ -148,7 +118,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //Ground OverLay
         //Image
         mMap.addGroundOverlay(new GroundOverlayOptions()
-                .position(delhi, 500f, 500f)
+                .position(chakand, 500f, 500f)
                 .image(BitmapDescriptorFactory.fromResource(R.drawable.animal))
                 .clickable(true));
 

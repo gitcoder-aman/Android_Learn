@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:allowBackup="true"
@@ -18,7 +20,7 @@
         android:theme="@style/Theme.PracticeWS"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.GetLocationActivity"
+            android:name=".Services.GetLocationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -58,6 +60,10 @@
             android:exported="false"
             android:label="@string/title_activity_maps"
             android:theme="@style/MyTheme" />
+
+        <service android:name=".Services.LocationService"
+            android:exported="false"
+            android:enabled="true"/>
         <activity
             android:name=".Activity.DataPassingInFragActivity"
             android:exported="false"
