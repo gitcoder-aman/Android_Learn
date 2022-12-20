@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -18,9 +18,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticeWS"
+        android:usesCleartextTraffic ="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".MyRetrofit.MyRetrofitActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".RetrofitAPI.RetrofitActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Services.GetLocationActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Services.LocationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -61,9 +85,11 @@
             android:label="@string/title_activity_maps"
             android:theme="@style/MyTheme" />
 
-        <service android:name=".Services.LocationService"
-            android:exported="false"
-            android:enabled="true"/>
+        <service
+            android:name=".Services.LocationService"
+            android:enabled="true"
+            android:exported="false" />
+
         <activity
             android:name=".Activity.DataPassingInFragActivity"
             android:exported="false"

@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ApiActivity extends AppCompatActivity {
-
+//Get API
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -15,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
@@ -34,13 +35,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class GetLocationActivity extends AppCompatActivity  {
+public class GetLocationActivity extends AppCompatActivity {
 
     //GetCurrent Location
 
     FusedLocationProviderClient fusedLocationProviderClient;
     TextView country, city, address, longitude, latitude;
-    Button getLocationBtn,stopLocationBtn;
+    private Button getLocationBtn, stopLocationBtn;
     private final int PERMISSION_CODE = 100;
 
 
@@ -48,7 +49,6 @@ public class GetLocationActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_location);
-
 
         country = findViewById(R.id.country);
         city = findViewById(R.id.city);
@@ -58,6 +58,10 @@ public class GetLocationActivity extends AppCompatActivity  {
         getLocationBtn = findViewById(R.id.getLocationBtn);
         stopLocationBtn = findViewById(R.id.stopLocationBtn);
 
+        getLocationBtn.setVisibility(View.VISIBLE);
+        stopLocationBtn.setVisibility(View.VISIBLE);
+
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
 
@@ -65,8 +69,9 @@ public class GetLocationActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 Log.d("find", "ok1");
-                checkGPSONOROFF();
-                getLastLocation();
+                if (checkGPSONOROFF()) {
+                    getLastLocation();
+                }
             }
         });
         stopLocationBtn.setOnClickListener(new View.OnClickListener() {
@@ -77,20 +82,22 @@ public class GetLocationActivity extends AppCompatActivity  {
         });
     }
 
-    private void checkGPSONOROFF() {
-        LocationManager lm = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
+    private boolean checkGPSONOROFF() {
+        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         boolean gps_enabled = false;
         boolean network_enabled = false;
 
         try {
             gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        } catch(Exception ex) {}
+        } catch (Exception ex) {
+        }
 
         try {
             network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        } catch(Exception ex) {}
+        } catch (Exception ex) {
+        }
 
-        if(!gps_enabled && !network_enabled) {
+        if (!gps_enabled && !network_enabled) {
             // notify user
             new AlertDialog.Builder(GetLocationActivity.this)
                     .setMessage("GPS required this app")
@@ -101,18 +108,23 @@ public class GetLocationActivity extends AppCompatActivity  {
                         }
                     })
                     .setCancelable(false)
-                    .setNegativeButton("Cancel",null)
+                    .setNegativeButton("Cancel", null)
                     .show();
+        }
+        if (gps_enabled && network_enabled) {
+            return true;
+        } else {
+            return false;
         }
     }
 
     private boolean isLocationServiceRunning() {
         ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        if (activityManager != null){
-            for(ActivityManager.RunningServiceInfo serviceInfo : activityManager.getRunningServices(Integer.MAX_VALUE)){
+        if (activityManager != null) {
+            for (ActivityManager.RunningServiceInfo serviceInfo : activityManager.getRunningServices(Integer.MAX_VALUE)) {
 
-                if(LocationService.class.getName().equals(serviceInfo.service.getClassName())){
-                    if(serviceInfo.foreground){
+                if (LocationService.class.getName().equals(serviceInfo.service.getClassName())) {
+                    if (serviceInfo.foreground) {
                         return true;
                     }
                 }
@@ -121,18 +133,19 @@ public class GetLocationActivity extends AppCompatActivity  {
         }
         return false;
     }
-    private void startLocationService(){
-        if(!isLocationServiceRunning()){
-            Intent intent = new Intent(getApplicationContext(),LocationService.class);
+
+    private void startLocationService() {
+        if (!isLocationServiceRunning()) {
+            Intent intent = new Intent(getApplicationContext(), LocationService.class);
             intent.setAction(Constants.ACTION_START_LOCATION_SERVICE);
             startService(intent);
             Toast.makeText(this, "Location Services Started", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void stopLocationService(){
-        if(isLocationServiceRunning()){
-            Intent intent = new Intent(getApplicationContext(),LocationService.class);
+    private void stopLocationService() {
+        if (isLocationServiceRunning()) {
+            Intent intent = new Intent(getApplicationContext(), LocationService.class);
             intent.setAction(Constants.ACTION_STOP_LOCATION_SERVICE);
             startService(intent);
             Toast.makeText(this, "Location Services Stopped", Toast.LENGTH_SHORT).show();
@@ -174,7 +187,7 @@ public class GetLocationActivity extends AppCompatActivity  {
         Geocoder geocoder = new Geocoder(GetLocationActivity.this, Locale.getDefault());
         List<Address> addressList = null;
         try {
-            addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 10);
 
             latitude.setText("Latitude: " + addressList.get(0).getLatitude());
             longitude.setText("Longitude: " + addressList.get(0).getLongitude());
@@ -197,10 +210,10 @@ public class GetLocationActivity extends AppCompatActivity  {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if(requestCode == PERMISSION_CODE && grantResults.length > 0){
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if (requestCode == PERMISSION_CODE && grantResults.length > 0) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 startLocationService();
-            }else{
+            } else {
                 Toast.makeText(this, "Permission denied!", Toast.LENGTH_SHORT).show();
             }
         }

@@ -118,6 +118,15 @@
         app:layout_constraintTop_toBottomOf="@+id/toastBtn" />
 
     <Button
+        android:id="@+id/retrofitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Retrofit API"
+        app:layout_constraintStart_toEndOf="@+id/locationActivityBtn"
+        app:layout_constraintTop_toBottomOf="@+id/getCurrentLocationBtn" />
+
+    <Button
         android:id="@+id/fragmentBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -195,8 +204,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="CurrentLocation"
+        android:text="CurrentLocation with service"
         app:layout_constraintStart_toEndOf="@+id/postApiBtn"
         app:layout_constraintTop_toBottomOf="@+id/navigation_drawer" />
+
+    <Button
+        android:id="@+id/locationActivityBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Location No Service"
+        app:layout_constraintStart_toStartOf="@+id/postApiBtn"
+        app:layout_constraintTop_toBottomOf="@+id/postApiBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

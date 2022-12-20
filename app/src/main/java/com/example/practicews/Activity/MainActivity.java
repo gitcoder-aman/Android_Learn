@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.practicews.R;
+import com.example.practicews.RetrofitAPI.RetrofitActivity;
 import com.example.practicews.Services.GetLocationActivity;
+import com.example.practicews.Services.LocationActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btn,aniBtn,lottieBtn,listView,cardViewBtn,recyclerViewBtn,toolbarBtn,toastBtn;
-        Button dialogBtn,notifBtn,implicitBtn,fragmentBtn,tabLayoutBtn,bottomNavigationBtn,navigationDrawer,dataPassFrag,mapBtn;
-        Button getApiBtn,postApiBtn,getCurrentLocationBtn;
+        Button btn, aniBtn, lottieBtn, listView, cardViewBtn, recyclerViewBtn, toolbarBtn, toastBtn;
+        Button dialogBtn, notifBtn, implicitBtn, fragmentBtn, tabLayoutBtn, bottomNavigationBtn, navigationDrawer, dataPassFrag, mapBtn;
+        Button getApiBtn, postApiBtn, locationWithServiceBtn, locationWithoutServiceBtn,retrofitBtn;
 
         btn = findViewById(R.id.btn);
         aniBtn = findViewById(R.id.animationBtn);
@@ -40,13 +42,15 @@ public class MainActivity extends AppCompatActivity {
         mapBtn = findViewById(R.id.map_button);
         getApiBtn = findViewById(R.id.api_btn);
         postApiBtn = findViewById(R.id.postApiBtn);
-        getCurrentLocationBtn = findViewById(R.id.getCurrentLocationBtn);
+        locationWithServiceBtn = findViewById(R.id.getCurrentLocationBtn);
+        locationWithoutServiceBtn = findViewById(R.id.locationActivityBtn);
+        retrofitBtn = findViewById(R.id.retrofitBtn);
 
 
         Intent intent = new Intent(this, DataPassingActivity.class);
-        intent.putExtra("title","Home");
-        intent.putExtra("student_name","Aman");
-        intent.putExtra("Roll no",10);
+        intent.putExtra("title", "Home");
+        intent.putExtra("student_name", "Aman");
+        intent.putExtra("Roll no", 10);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,13 +78,13 @@ public class MainActivity extends AppCompatActivity {
         cardViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,CardViewActivity.class));
+                startActivity(new Intent(MainActivity.this, CardViewActivity.class));
             }
         });
         recyclerViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,RecyclerViewActivity.class));
+                startActivity(new Intent(MainActivity.this, RecyclerViewActivity.class));
             }
         });
         toolbarBtn.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         toastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,CustomToastActivity.class));
+                startActivity(new Intent(MainActivity.this, CustomToastActivity.class));
             }
         });
         dialogBtn.setOnClickListener(new View.OnClickListener() {
@@ -104,25 +108,25 @@ public class MainActivity extends AppCompatActivity {
         notifBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,NotificationActivity.class));
+                startActivity(new Intent(MainActivity.this, NotificationActivity.class));
             }
         });
         implicitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,ImplicitIntentActivity.class));
+                startActivity(new Intent(MainActivity.this, ImplicitIntentActivity.class));
             }
         });
         fragmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,FragmentActivity.class));
+                startActivity(new Intent(MainActivity.this, FragmentActivity.class));
             }
         });
         tabLayoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,TabLayoutActivity.class));
+                startActivity(new Intent(MainActivity.this, TabLayoutActivity.class));
             }
         });
         bottomNavigationBtn.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         navigationDrawer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,NavigationDrawer.class));
+                startActivity(new Intent(MainActivity.this, NavigationDrawer.class));
             }
         });
         dataPassFrag.setOnClickListener(new View.OnClickListener() {
@@ -147,28 +151,40 @@ public class MainActivity extends AppCompatActivity {
         mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,MapsActivity.class));
+                startActivity(new Intent(MainActivity.this, MapsActivity.class));
             }
         });
         getApiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,ApiActivity.class));
+                startActivity(new Intent(MainActivity.this, ApiActivity.class));
             }
         });
         postApiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,PostApiActivity.class));
+                startActivity(new Intent(MainActivity.this, PostApiActivity.class));
             }
         });
-        getCurrentLocationBtn.setOnClickListener(new View.OnClickListener() {
+        locationWithServiceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, GetLocationActivity.class));
             }
         });
 
+        locationWithoutServiceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, LocationActivity.class));
+            }
+        });
+        retrofitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, RetrofitActivity.class));
+            }
+        });
 
 
     }

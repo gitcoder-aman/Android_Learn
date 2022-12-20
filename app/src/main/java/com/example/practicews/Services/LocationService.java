@@ -35,7 +35,7 @@ public class LocationService extends Service {
             if (locationResult != null && locationResult.getLastLocation() != null) {
                 double latitude = locationResult.getLastLocation().getLatitude();
                 double longitude = locationResult.getLastLocation().getLongitude();
-                Log.d("LOCATION_UPDATE", latitude + "," + longitude);
+                Log.d("Debug", latitude + "," + longitude);
 
             }
         }
@@ -45,33 +45,38 @@ public class LocationService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
 
+        Log.d("Debug", "IBinderEx");
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
     private void startLocationService() {  //all message comment out Location Notification
 
-//        String channelId = "location_notification_channel";
-//        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        Intent resultIntent = new Intent();
-//        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Log.d("Debug", "StartLocationServiceEx");
 
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelId);
-//        builder.setSmallIcon(R.mipmap.ic_launcher);
-//        builder.setContentTitle("Location Services");
-//        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
-//        builder.setContentText("Running");
-//        builder.setContentIntent(pendingIntent);
-//        builder.setAutoCancel(false);
-//        builder.setPriority(NotificationCompat.PRIORITY_MAX);
+        String channelId = "location_notification_channel";
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent resultIntent = new Intent();
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            if (notificationManager != null && notificationManager.getNotificationChannel(channelId) == null) {
-//
-//                NotificationChannel notificationChannel = new NotificationChannel(channelId, "Location Service", NotificationManager.IMPORTANCE_HIGH);
-//                notificationChannel.setDescription("This channel is used by location service");
-//                notificationManager.createNotificationChannel(notificationChannel);
-//            }
-//        }
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelId);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setContentTitle("Location Services");
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+        builder.setContentText("Running");
+        builder.setContentIntent(pendingIntent);
+        builder.setAutoCancel(false);
+        builder.setPriority(NotificationCompat.PRIORITY_MAX);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (notificationManager != null && notificationManager.getNotificationChannel(channelId) == null) {
+
+                Log.d("Debug", "NotificationChannelEx");
+                NotificationChannel notificationChannel = new NotificationChannel(channelId, "Location Service", NotificationManager.IMPORTANCE_HIGH);
+                notificationChannel.setDescription("This channel is used by location service");
+                notificationManager.createNotificationChannel(notificationChannel);
+            }
+        }
+
         LocationRequest locationRequest = new LocationRequest();
         locationRequest.setInterval(4000);
         locationRequest.setFastestInterval(2000);
@@ -87,12 +92,14 @@ public class LocationService extends Service {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
+        Log.d("Debug", "LocationRequestEx");
         LocationServices.getFusedLocationProviderClient(this)
                 .requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
-//        startForeground(Constants.LOCATION_SERVICE_ID, builder.build());
+        startForeground(Constants.LOCATION_SERVICE_ID, builder.build());
     }
 
     private void stopLocationService() {
+        Log.d("Debug", "StopLocationServiceEx");
         LocationServices.getFusedLocationProviderClient(this)
                 .removeLocationUpdates(locationCallback);
         stopForeground(true);
@@ -102,6 +109,7 @@ public class LocationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+        Log.d("Debug", "onStartCommandEx");
         if (intent != null) {
             String action = intent.getAction();
             if (action != null) {
