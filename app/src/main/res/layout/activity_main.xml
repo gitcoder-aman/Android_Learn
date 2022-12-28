@@ -118,6 +118,14 @@
         app:layout_constraintTop_toBottomOf="@+id/toastBtn" />
 
     <Button
+        android:id="@+id/youtubeThumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="youtubeBtn"
+        app:layout_constraintStart_toStartOf="@+id/locationActivityBtn"
+        app:layout_constraintTop_toBottomOf="@+id/locationActivityBtn" />
+
+    <Button
         android:id="@+id/retrofitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

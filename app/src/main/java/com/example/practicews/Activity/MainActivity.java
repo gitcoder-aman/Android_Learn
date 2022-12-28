@@ -1,5 +1,6 @@
 package com.example.practicews.Activity;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Button btn, aniBtn, lottieBtn, listView, cardViewBtn, recyclerViewBtn, toolbarBtn, toastBtn;
         Button dialogBtn, notifBtn, implicitBtn, fragmentBtn, tabLayoutBtn, bottomNavigationBtn, navigationDrawer, dataPassFrag, mapBtn;
         Button getApiBtn, postApiBtn, locationWithServiceBtn, locationWithoutServiceBtn,retrofitBtn;
+        Button youtubeThumb;
 
         btn = findViewById(R.id.btn);
         aniBtn = findViewById(R.id.animationBtn);
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         locationWithServiceBtn = findViewById(R.id.getCurrentLocationBtn);
         locationWithoutServiceBtn = findViewById(R.id.locationActivityBtn);
         retrofitBtn = findViewById(R.id.retrofitBtn);
+        youtubeThumb = findViewById(R.id.youtubeThumb);
 
 
         Intent intent = new Intent(this, DataPassingActivity.class);
@@ -183,6 +186,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, RetrofitActivity.class));
+            }
+        });
+        youtubeThumb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,youtubeActivity.class));
             }
         });
 
