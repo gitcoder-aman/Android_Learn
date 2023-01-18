@@ -1,4 +1,4 @@
-package com.tech.mymovietvshows.Model;
+package com.example.practicews.Model;
 
 
 public class TrendingMovieResultModel {

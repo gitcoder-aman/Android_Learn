@@ -30,6 +30,7 @@ public class DataPassingInFragActivity extends AppCompatActivity {
 
                 //Data Passing through 2nd way
                 loadFragment(DataPassFragment.getInstance("Raman",11));
+//                loadFragment(new DataPassFragment());  //1st way
             }
         });
     }

@@ -1,6 +1,5 @@
 package com.example.practicews.Activity;
 
-import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,10 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.practicews.AlarmManager.AlarmActivity;
 import com.example.practicews.R;
 import com.example.practicews.RetrofitAPI.RetrofitActivity;
+import com.example.practicews.RoomDB.RoomDBActivity;
+import com.example.practicews.Sensor.AccelerometerSensorActivity;
+import com.example.practicews.Sensor.AmbientLightActivity;
+import com.example.practicews.Sensor.ProximitySensorActivity;
 import com.example.practicews.Services.GetLocationActivity;
 import com.example.practicews.Services.LocationActivity;
+import com.example.practicews.Services.MusicActivity;
+import com.example.practicews.SqLiteDatabase.SQLActivity1;
+import com.example.practicews.SqLiteDatabase.SqliteDatabaseActivity;
+import com.example.practicews.sendReceiveMessage.MessageActivity;
+import com.example.practicews.sharedPrefrence.SplashScreenActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         Button btn, aniBtn, lottieBtn, listView, cardViewBtn, recyclerViewBtn, toolbarBtn, toastBtn;
         Button dialogBtn, notifBtn, implicitBtn, fragmentBtn, tabLayoutBtn, bottomNavigationBtn, navigationDrawer, dataPassFrag, mapBtn;
         Button getApiBtn, postApiBtn, locationWithServiceBtn, locationWithoutServiceBtn,retrofitBtn;
-        Button youtubeThumb;
+        Button youtubeThumb,webViewBtn,sharedPreBtn,databaseBtn,roomDbBtn,pictureBtn,audioBtn,videoBtn,accelerometerBtn,proximityBtn,ambientLightBtn ;
+        Button serviceBtn,alarmBtn,messageBtn;
 
         btn = findViewById(R.id.btn);
         aniBtn = findViewById(R.id.animationBtn);
@@ -48,6 +58,20 @@ public class MainActivity extends AppCompatActivity {
         locationWithoutServiceBtn = findViewById(R.id.locationActivityBtn);
         retrofitBtn = findViewById(R.id.retrofitBtn);
         youtubeThumb = findViewById(R.id.youtubeThumb);
+        webViewBtn = findViewById(R.id.webviewBtn);
+        sharedPreBtn = findViewById(R.id.sharedPrefBtn);
+        databaseBtn = findViewById(R.id.databaseBtn);
+        roomDbBtn = findViewById(R.id.roomDbBtn);
+        pictureBtn = findViewById(R.id.pictureBtn);
+        audioBtn = findViewById(R.id.audioBtn);
+        videoBtn = findViewById(R.id.videoBtn);
+        accelerometerBtn = findViewById(R.id.accelerometerBtn);
+        proximityBtn = findViewById(R.id.proxyBtn);
+        ambientLightBtn = findViewById(R.id.lightsensorBtn);
+        serviceBtn  = findViewById(R.id.serviceBtn);
+        alarmBtn  = findViewById(R.id.alarmBtn);
+        messageBtn = findViewById(R.id.msgBtn);
+
 
 
         Intent intent = new Intent(this, DataPassingActivity.class);
@@ -192,6 +216,90 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,youtubeActivity.class));
+            }
+        });
+        webViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,WebViewActivity.class));
+            }
+        });
+        sharedPreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SplashScreenActivity.class));
+            }
+        });
+        databaseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SqliteDatabaseActivity.class));
+            }
+        });
+
+        roomDbBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, RoomDBActivity.class));
+            }
+        });
+        pictureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,pictureActivity.class));
+            }
+        });
+
+        audioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,AudioActivity.class));
+            }
+        });
+
+        videoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,VideoActivity.class));
+            }
+        });
+
+        accelerometerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AccelerometerSensorActivity.class));
+            }
+        });
+        proximityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ProximitySensorActivity.class));
+            }
+        });
+
+        ambientLightBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AmbientLightActivity.class));
+            }
+        });
+
+        serviceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MusicActivity.class));
+            }
+        });
+        alarmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AlarmActivity.class));
+            }
+        });
+        messageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MessageActivity.class));
             }
         });
 

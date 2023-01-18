@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/a"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
@@ -39,11 +40,11 @@
 
     <Button
         android:id="@+id/listView"
+        style="@style/MyButtonBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_6sdp"
         android:text="ListView"
-        style="@style/MyButtonBold"
         app:layout_constraintBottom_toBottomOf="@+id/btn"
         app:layout_constraintStart_toEndOf="@+id/btn"
         app:layout_constraintTop_toTopOf="@+id/btn" />
@@ -223,5 +224,117 @@
         android:text="Get Location No Service"
         app:layout_constraintStart_toStartOf="@+id/postApiBtn"
         app:layout_constraintTop_toBottomOf="@+id/postApiBtn" />
+
+    <Button
+        android:id="@+id/webviewBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="WebView"
+        app:layout_constraintStart_toEndOf="@+id/youtubeThumb"
+        app:layout_constraintTop_toBottomOf="@+id/locationActivityBtn" />
+
+    <Button
+        android:id="@+id/sharedPrefBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="SharedPerfrence"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/webviewBtn"
+        app:layout_constraintTop_toBottomOf="@+id/retrofitBtn" />
+
+    <Button
+        android:id="@+id/databaseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Database"
+        app:layout_constraintStart_toStartOf="@+id/youtubeThumb"
+        app:layout_constraintTop_toBottomOf="@+id/youtubeThumb" />
+
+    <Button
+        android:id="@+id/roomDbBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="RoomDB"
+        app:layout_constraintStart_toEndOf="@+id/databaseBtn"
+        app:layout_constraintTop_toBottomOf="@+id/webviewBtn" />
+
+    <Button
+        android:id="@+id/pictureBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Picture"
+        app:layout_constraintStart_toEndOf="@+id/roomDbBtn"
+        app:layout_constraintTop_toBottomOf="@+id/sharedPrefBtn" />
+
+    <Button
+        android:id="@+id/audioBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AudioPlay"
+        app:layout_constraintStart_toStartOf="@+id/databaseBtn"
+        app:layout_constraintTop_toBottomOf="@+id/databaseBtn" />
+
+    <Button
+        android:id="@+id/videoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="VideoPlay"
+        app:layout_constraintStart_toEndOf="@+id/audioBtn"
+        app:layout_constraintTop_toBottomOf="@+id/roomDbBtn" />
+
+    <Button
+        android:id="@+id/accelerometerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="accelerometer"
+        app:layout_constraintStart_toEndOf="@+id/videoBtn"
+        app:layout_constraintTop_toBottomOf="@+id/pictureBtn" />
+
+    <Button
+        android:id="@+id/proxyBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ProxySensor"
+        app:layout_constraintStart_toStartOf="@+id/audioBtn"
+        app:layout_constraintTop_toBottomOf="@+id/audioBtn" />
+
+    <Button
+        android:id="@+id/lightsensorBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="AmbientLight"
+        app:layout_constraintStart_toEndOf="@+id/proxyBtn"
+        app:layout_constraintTop_toBottomOf="@+id/videoBtn" />
+
+    <Button
+        android:id="@+id/serviceBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service"
+        app:layout_constraintStart_toEndOf="@+id/lightsensorBtn"
+        app:layout_constraintTop_toBottomOf="@+id/accelerometerBtn" />
+
+    <Button
+        android:id="@+id/alarmBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alarm"
+        app:layout_constraintStart_toStartOf="@+id/proxyBtn"
+        app:layout_constraintTop_toBottomOf="@+id/proxyBtn" />
+
+    <Button
+        android:id="@+id/msgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Message"
+        app:layout_constraintStart_toEndOf="@+id/alarmBtn"
+        app:layout_constraintTop_toBottomOf="@+id/lightsensorBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

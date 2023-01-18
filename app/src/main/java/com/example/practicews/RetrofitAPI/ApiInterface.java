@@ -3,6 +3,7 @@ package com.example.practicews.RetrofitAPI;
 import com.example.practicews.Model.TrendingMovieModel;
 import com.example.practicews.Model.TrendingMovieResultModel;
 import com.example.practicews.Model.Upcoming;
+import com.example.practicews.RetrofitAPI.UserModelOfAPI;
 
 import java.util.List;
 

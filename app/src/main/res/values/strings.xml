@@ -17,4 +17,13 @@
     <string name="satellite_map">Satellite Map</string>
     <string name="terrain_map">Terrain Map</string>
     <string name="none_map">None Map</string>
+    <string name="name">Name</string>
+    <string name="username">userName</string>
+    <string name="password">password</string>
+    <string name="delete">Delete</string>
+    <string name="insert">Insert</string>
+    <string name="update">update</string>
+    <string name="view">View</string>
+    <string name="signup">SignUp</string>
+    <string name="sensor_value">Sensor Value</string>
 </resources>
