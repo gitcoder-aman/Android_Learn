@@ -13,7 +13,7 @@ public class RetrofitInstance {
     public RetrofitInstance() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(api)
+                .baseUrl("https://www.instagram.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

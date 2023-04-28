@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -64,13 +65,13 @@ public class GetLocationActivity extends AppCompatActivity {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-
         getLocationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("find", "ok1");
                 if (checkGPSONOROFF()) {
-                    getLastLocation();
+//                    getLastLocation();
+                    startLocationService();
                 }
             }
         });
@@ -83,6 +84,7 @@ public class GetLocationActivity extends AppCompatActivity {
     }
 
     private boolean checkGPSONOROFF() {
+
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         boolean gps_enabled = false;
         boolean network_enabled = false;
@@ -139,6 +141,7 @@ public class GetLocationActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), LocationService.class);
             intent.setAction(Constants.ACTION_START_LOCATION_SERVICE);
             startService(intent);
+//            ContextCompat.startForegroundService(this,intent);
             Toast.makeText(this, "Location Services Started", Toast.LENGTH_SHORT).show();
         }
     }
@@ -187,7 +190,7 @@ public class GetLocationActivity extends AppCompatActivity {
         Geocoder geocoder = new Geocoder(GetLocationActivity.this, Locale.getDefault());
         List<Address> addressList = null;
         try {
-            addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 10);
+            addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
             latitude.setText("Latitude: " + addressList.get(0).getLatitude());
             longitude.setText("Longitude: " + addressList.get(0).getLongitude());

@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.practicews.AlarmManager.AlarmActivity;
 import com.example.practicews.R;
+import com.example.practicews.RetrofitAPI.InstagramActivity;
 import com.example.practicews.RetrofitAPI.RetrofitActivity;
 import com.example.practicews.RoomDB.RoomDBActivity;
 import com.example.practicews.Sensor.AccelerometerSensorActivity;
@@ -17,7 +18,6 @@ import com.example.practicews.Sensor.ProximitySensorActivity;
 import com.example.practicews.Services.GetLocationActivity;
 import com.example.practicews.Services.LocationActivity;
 import com.example.practicews.Services.MusicActivity;
-import com.example.practicews.SqLiteDatabase.SQLActivity1;
 import com.example.practicews.SqLiteDatabase.SqliteDatabaseActivity;
 import com.example.practicews.sendReceiveMessage.MessageActivity;
 import com.example.practicews.sharedPrefrence.SplashScreenActivity;
@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         serviceBtn  = findViewById(R.id.serviceBtn);
         alarmBtn  = findViewById(R.id.alarmBtn);
         messageBtn = findViewById(R.id.msgBtn);
-
 
 
         Intent intent = new Intent(this, DataPassingActivity.class);
@@ -209,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         retrofitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, RetrofitActivity.class));
+                startActivity(new Intent(MainActivity.this, InstagramActivity.class));
             }
         });
         youtubeThumb.setOnClickListener(new View.OnClickListener() {
@@ -302,7 +301,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MessageActivity.class));
             }
         });
-
 
     }
 }

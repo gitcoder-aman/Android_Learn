@@ -38,17 +38,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-//    public void addContacts(String name,String phone_no){
-//        SQLiteDatabase database = this.getWritableDatabase();
-//
-//        ContentValues contentValues = new ContentValues();
-//
-//        contentValues.put(name,name);
-//        contentValues.put(phone,phone_no);
-//
-//        database.insert(TABLE_CONTACT,null,contentValues);
-//    }
-
     //insert data
     public boolean insert_data(String name, String userName, String password) {
         SQLiteDatabase database = this.getWritableDatabase();
